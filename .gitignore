@@ -1,0 +1,344 @@
+# ============================================================
+# VisionOps Infrastructure Repository
+# Prevent secrets, credentials, local state, generated files,
+# temporary artifacts, and machine-specific configuration
+# from being committed.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Terraform
+# ------------------------------------------------------------
+
+# Local Terraform working directory
+**/.terraform/*
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform plan files
+*.tfplan
+*.plan
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Terraform CLI configuration
+.terraformrc
+terraform.rc
+
+# Local variable files may contain secrets / account-specific data
+*.tfvars
+*.tfvars.json
+
+# Override files are usually local/temporary
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+
+# ------------------------------------------------------------
+# IMPORTANT:
+# DO NOT ignore .terraform.lock.hcl
+# It should normally be committed for reproducible provider versions.
+# ------------------------------------------------------------
+
+
+# ------------------------------------------------------------
+# Environment / Secrets
+# ------------------------------------------------------------
+
+.env
+.env.*
+!.env.example
+
+secrets/
+.secret/
+*.secret
+
+credentials
+credentials.*
+*.credentials
+
+# AWS credential/config files if copied locally
+.aws/
+aws-credentials*
+aws-config*
+
+# Generic tokens / sensitive local config
+*.token
+*.tokens
+
+
+# ------------------------------------------------------------
+# Private Keys / Certificates
+# ------------------------------------------------------------
+
+*.pem
+*.key
+*.pkey
+*.ppk
+*.p12
+*.pfx
+
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+
+# Certificate signing/private material
+*.csr
+*.jks
+*.keystore
+
+# Public certificates may sometimes be safe,
+# but keep local generated TLS artifacts out by default.
+certs/local/
+tls/local/
+
+
+# ------------------------------------------------------------
+# Kubernetes
+# ------------------------------------------------------------
+
+# Local kubeconfig files
+kubeconfig
+kubeconfig.*
+*.kubeconfig
+
+# Common generated kubeconfig directories
+.kube/
+kind-kubeconfig*
+eks-kubeconfig*
+
+# Kubernetes Secret manifests generated locally
+*-secret.local.yaml
+*-secrets.local.yaml
+secret.local.yaml
+secrets.local.yaml
+
+
+# ------------------------------------------------------------
+# Helm
+# ------------------------------------------------------------
+
+# Packaged Helm charts
+*.tgz
+
+# Local values files that may contain secrets
+values.local.yaml
+values.local.yml
+values.secret.yaml
+values.secret.yml
+values.secrets.yaml
+values.secrets.yml
+
+
+# ------------------------------------------------------------
+# Ansible
+# ------------------------------------------------------------
+
+# Retry files
+*.retry
+
+# Vault password files
+.vault_pass
+.vault_password
+vault-password*
+vault_pass*
+
+# Local inventories that may contain real IPs / credentials
+inventory.local
+inventory.local.*
+inventories/local-private/
+inventories/generated/
+
+
+# ------------------------------------------------------------
+# SSH / VM
+# ------------------------------------------------------------
+
+.ssh/
+*.pub.local
+
+# Vagrant
+.vagrant/
+
+# Multipass / local VM generated metadata
+multipass-local/
+
+
+# ------------------------------------------------------------
+# Generated Infrastructure Outputs
+# ------------------------------------------------------------
+
+generated/
+tmp/
+temp/
+.cache/
+
+# Local exports / inventories
+resource-inventory.local.*
+aws-resource-inventory.*
+terraform-output.local.*
+terraform-output.secret.*
+
+# Generated diagnostics that have not been sanitized yet
+diagnostics/raw/
+evidence/raw/
+reports/raw/
+
+
+# ------------------------------------------------------------
+# Logs
+# ------------------------------------------------------------
+
+*.log
+logs/
+log/
+
+# Keep sanitized evidence/reports in Git when appropriate,
+# but not raw logs by default.
+
+
+# ------------------------------------------------------------
+# Backup / Database Dumps
+# ------------------------------------------------------------
+
+*.sql
+*.dump
+*.backup
+*.bak
+
+backups/
+backup/
+
+# Sanitized fixtures/examples can be explicitly whitelisted
+!examples/**/*.sql
+
+
+# ------------------------------------------------------------
+# Python automation
+# ------------------------------------------------------------
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+.venv/
+venv/
+env/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+coverage.xml
+.coverage
+htmlcov/
+
+
+# ------------------------------------------------------------
+# Node.js tooling (if used by local tooling/scripts)
+# ------------------------------------------------------------
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.npm/
+.pnpm-store/
+
+
+# ------------------------------------------------------------
+# Go tooling / local binaries
+# ------------------------------------------------------------
+
+bin/
+dist/
+build/
+
+*.exe
+*.test
+*.out
+
+
+# ------------------------------------------------------------
+# IDE / Editor
+# ------------------------------------------------------------
+
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+
+.idea/
+*.iml
+
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+
+# ------------------------------------------------------------
+# Operating System
+# ------------------------------------------------------------
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+
+
+# ------------------------------------------------------------
+# Temporary / Archive Files
+# ------------------------------------------------------------
+
+*.tmp
+*.temp
+*.swp
+*.swo
+
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+
+
+# ------------------------------------------------------------
+# Local Cost / Account Information
+# ------------------------------------------------------------
+
+cost-reports/private/
+billing-export/
+billing-data/
+
+account-info.local.*
+aws-account.local.*
+
+
+# ------------------------------------------------------------
+# Local Tool State
+# ------------------------------------------------------------
+
+.tool-cache/
+.local/
+.local-state/
